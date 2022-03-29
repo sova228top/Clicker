@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(90deg, purple, red);
+            font-size: 25px;
+        }
+        button{
+            margin-top: 20px;
+            background-color: black;
+            color: firebrick;
+            font-size: 25px;
+            padding: 7px 14px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="text"></div>
+    <button id="btn" onclick="onC()">Click me</button>
+    
+    <script>
+
+        let vkl = false
+        let startTimer = 10
+        let interval
+        let count = 0
+
+        function onC(){
+            if(vkl == false){
+                vkl = true
+            interval = setInterval(()=>{
+                if (startTimer == 0){
+                    clearInterval(interval)
+                    btn.disabled = true
+                    setTimeout(()=>{
+                        btn.disabled = false
+                        startTimer = 10
+                        count = 0
+                        btn.innerText = 'Click me'
+                        text.innerText = ''
+                        vkl = false
+                    },5000)
+
+
+                    return
+                }
+
+
+                startTimer = startTimer - 1
+                text.innerText = startTimer
+            },1000)
+
+        }else{
+            count++
+            btn.innerText = count
+        }
+    }
+
+
+
+    </script>
+</body>
+</html>
